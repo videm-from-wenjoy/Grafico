@@ -16,6 +16,7 @@ import java.awt.event.ActionEvent;
 import javax.swing.SwingConstants;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.awt.Toolkit;
 
 public class Aplicacion extends JFrame {
 
@@ -41,6 +42,7 @@ public class Aplicacion extends JFrame {
 	 * Create the frame.
 	 */
 	public Aplicacion() {
+		setIconImage(Toolkit.getDefaultToolkit().getImage(Aplicacion.class.getResource("/img/icon.png")));
 		setResizable(false);
 		setTitle("VIDEM");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -62,7 +64,7 @@ public class Aplicacion extends JFrame {
 			public void actionPerformed(ActionEvent arg0) {
 			}
 		});
-		btnIniciarSesion.setBounds(29, 66, 175, 101);
+		btnIniciarSesion.setBounds(31, 66, 175, 101);
 		contentPane.add(btnIniciarSesion);
 		
 		JButton btnRegistrarse = new JButton("Registrarse en VIDEM");
