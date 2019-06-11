@@ -50,6 +50,9 @@ public class ClienteV extends JFrame {
 		JMenuItem mntmPorCdigoDe_2 = new JMenuItem("Por c\u00F3digo de producto");
 		mnArtculosDeMerchandising.add(mntmPorCdigoDe_2);
 		
+		JMenuItem mntmPorFabricante_1 = new JMenuItem("Por fabricante");
+		mnArtculosDeMerchandising.add(mntmPorFabricante_1);
+		
 		JMenu mnConsolas = new JMenu("Consolas");
 		mnBuscar.add(mnConsolas);
 		
