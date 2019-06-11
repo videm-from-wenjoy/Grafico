@@ -13,7 +13,7 @@ import modelos.Usuario;
 
 import javax.swing.UIManager;
 import java.awt.Color;
-import javax.swing.JLabel;
+import javax.swing.JLabel;//
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import javax.swing.JButton;
@@ -100,7 +100,7 @@ public class IniciarSesion extends JFrame {
 					}
 				}
 				if(opc.equalsIgnoreCase("CLIENTE")) {
-					Cliente v=new Cliente();
+					ClienteV v=new ClienteV();
 					v.setVisible(true);
 				}
 				if(!opc.equalsIgnoreCase("CLIENTE") && !opc.equalsIgnoreCase("EMPLEADO")){
