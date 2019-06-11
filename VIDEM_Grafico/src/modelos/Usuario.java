@@ -7,11 +7,10 @@ package modelos;
  */
 
 public class Usuario {
-	private String email, password,nombre,domicilio,dni,rol;
-	private int telefono;
+	private String email, password,nombre,domicilio,dni,rol,telefono;
 	
 	public Usuario(String email, String password, String nombre, String domicilio, String dni, String rol,
-			int telefono) {
+			String telefono) {
 		super();
 		this.email = email;
 		this.password = password;
@@ -80,11 +79,11 @@ public class Usuario {
 		this.rol = rol;
 	}
 
-	public int getTelefono() {
+	public String getTelefono() {
 		return telefono;
 	}
 
-	public void setTelefono(int telefono) {
+	public void setTelefono(String telefono) {
 		this.telefono = telefono;
 	}
 

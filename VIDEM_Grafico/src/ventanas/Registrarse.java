@@ -10,6 +10,7 @@ import javax.swing.border.TitledBorder;
 
 import bbdd.BD_Usuario;
 import modelos.Usuario;
+import modelos.Cliente;
 
 import javax.swing.UIManager;
 import java.awt.Color;
@@ -120,29 +121,30 @@ public class Registrarse extends JFrame {
 			@Override
 			public void mouseClicked(MouseEvent arg0) {
 
-				Usuario user = new Usuario(textCorreo.getText(),textClave.getText(),textNombre.getText(),textDireccion.getText(),textDni.getText(),"CLIENTE",textTelefono.getText());				
-				String opc=bbdd.login(user);
-				if (opc.equalsIgnoreCase("EMPLEADO")) {
-					String opc2=bbdd.loginEncargado(user);
-					if(opc2.equalsIgnoreCase("ADMINISTRADOR")) {
-						Administrador v=new Administrador();
-						v.setVisible(true);
-					}
-					if(opc2.equalsIgnoreCase("ENCARGADO")) {
-						Encargado v=new Encargado();
-						v.setVisible(true);
-					}
-					if(opc2.equalsIgnoreCase("EMPLEADO")) {
-						Empleado v=new Empleado();
+				Usuario user = new Usuario(textCorreo.getText(),textClave.getText(),textNombre.getText(),textDireccion.getText(),textDni.getText(),"CLIENTE",textTelefono.getText());
+				if ( bbdd.añadir_Usuario(user)) {
+					JOptionPane.showMessageDialog(null, "Se ha dado de alta en VIDEM.", "Aviso", JOptionPane.WARNING_MESSAGE);
+				}
+				else {
+					JOptionPane.showMessageDialog(null, "No se ha podido dar de alta en VIDEM, por favor intentelo más tarde.", "Aviso", JOptionPane.WARNING_MESSAGE);
+				}
+				
+				int numero=bbdd.asignarNumCliente(user);
+				numero+=1;
+				Cliente cl = new Cliente(textCorreo.getText(),numero);
+				
+				if (bbdd.añadir_Cliente(cl)) {
+					JOptionPane.showMessageDialog(null, "Se ha dado de alta en clientes de  VIDEM.", "Aviso", JOptionPane.WARNING_MESSAGE);
+					user = new Usuario(textCorreo.getText(),textClave.getText());				
+					String opc=bbdd.login(user);
+					
+					if(opc.equalsIgnoreCase("CLIENTE")) {
+						ClienteV v=new ClienteV();
 						v.setVisible(true);
 					}
 				}
-				if(opc.equalsIgnoreCase("CLIENTE")) {
-					Cliente v=new Cliente();
-					v.setVisible(true);
-				}
-				if(!opc.equalsIgnoreCase("CLIENTE") && !opc.equalsIgnoreCase("EMPLEADO")){
-					JOptionPane.showMessageDialog(null, "Login Incorrecto: El usuario no se encuentra en nuestra base de datos.", "Aviso", JOptionPane.WARNING_MESSAGE);
+				else {
+					JOptionPane.showMessageDialog(null, "No se ha dado de alta en clientes de VIDEM.", "Aviso", JOptionPane.WARNING_MESSAGE);
 				}
 			}
 		});

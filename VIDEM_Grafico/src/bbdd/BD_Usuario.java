@@ -230,7 +230,7 @@ public class BD_Usuario extends BD_Conector {
 			while (reg.next()) {
 				users.add(new Usuario(reg.getString("EMAIL"), reg.getString("PASSWORD"), reg.getString("ROL"),
 						reg.getString("NOMBRE"), reg.getString("DNI"), reg.getString("DIRECCION"),
-						reg.getInt("TELEFONO")));
+						reg.getString("TELEFONO")));
 			}
 			s.close();
 			this.cerrar();
