@@ -13,7 +13,7 @@ import modelos.Usuario;
 
 import javax.swing.UIManager;
 import java.awt.Color;
-import javax.swing.JLabel;
+import javax.swing.JLabel;//
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import javax.swing.JButton;

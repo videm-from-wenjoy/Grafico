@@ -52,7 +52,7 @@ public class Aplicacion extends JFrame {
 		
 		JButton btnIniciarSesion = new JButton("Iniciar Sesi\u00F3n");
 		btnIniciarSesion.addMouseListener(new MouseAdapter() {
-			@Override
+			@Override//
 			public void mouseClicked(MouseEvent arg0) {
 				IniciarSesion v=new IniciarSesion();
 				v.setVisible(true);

@@ -32,27 +32,10 @@ public class Registrarse extends JFrame {
 	private BD_Usuario bbdd=new BD_Usuario("videm");
 	private JTextField textTelefono;
 
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					Registrarse frame = new Registrarse();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
-
-	/**
-	 * Create the frame.
-	 */
+	
+	
 	public Registrarse() {
-		setEnabled(false);
+		
 		setTitle("VIDEM: Registrarse en la aplicaci\u00F3n");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 760, 392);
@@ -140,7 +123,7 @@ public class Registrarse extends JFrame {
 					
 					if(opc.equalsIgnoreCase("CLIENTE")) {
 						ClienteV v=new ClienteV();
-						v.setVisible(true);
+						v.setVisible(true);//
 					}
 				}
 				else {
