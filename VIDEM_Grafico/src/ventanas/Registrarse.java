@@ -7,11 +7,18 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.border.TitledBorder;
+
+import bbdd.BD_Usuario;
+import modelos.Usuario;
+
 import javax.swing.UIManager;
 import java.awt.Color;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import javax.swing.JButton;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 public class Registrarse extends JFrame {
 
@@ -21,6 +28,8 @@ public class Registrarse extends JFrame {
 	private JTextField textDireccion;
 	private JTextField textClave;
 	private JTextField textDni;
+	private BD_Usuario bbdd=new BD_Usuario("videm");
+	private JTextField textTelefono;
 
 	/**
 	 * Launch the application.
@@ -73,8 +82,8 @@ public class Registrarse extends JFrame {
 		lblDomicilio.setBounds(380, 109, 56, 16);
 		panel.add(lblDomicilio);
 		
-		JLabel lblDni = new JLabel("DNI:");
-		lblDni.setBounds(282, 163, 35, 16);
+		JLabel lblDni = new JLabel("Documento Nacional Identidad:");
+		lblDni.setBounds(43, 163, 187, 16);
 		panel.add(lblDni);
 		
 		textCorreo = new JTextField();
@@ -98,7 +107,7 @@ public class Registrarse extends JFrame {
 		panel.add(textClave);
 		
 		textDni = new JTextField();
-		textDni.setBounds(320, 160, 116, 22);
+		textDni.setBounds(242, 160, 116, 22);
 		panel.add(textDni);
 		textDni.setColumns(10);
 		
@@ -107,7 +116,46 @@ public class Registrarse extends JFrame {
 		panel.add(lblInfo);
 		
 		JButton btnFinalizar = new JButton("Finalizar Registro");
+		btnFinalizar.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent arg0) {
+
+				Usuario user = new Usuario(textCorreo.getText(),textClave.getText(),textNombre.getText(),textDireccion.getText(),textDni.getText(),"CLIENTE",textTelefono.getText());				
+				String opc=bbdd.login(user);
+				if (opc.equalsIgnoreCase("EMPLEADO")) {
+					String opc2=bbdd.loginEncargado(user);
+					if(opc2.equalsIgnoreCase("ADMINISTRADOR")) {
+						Administrador v=new Administrador();
+						v.setVisible(true);
+					}
+					if(opc2.equalsIgnoreCase("ENCARGADO")) {
+						Encargado v=new Encargado();
+						v.setVisible(true);
+					}
+					if(opc2.equalsIgnoreCase("EMPLEADO")) {
+						Empleado v=new Empleado();
+						v.setVisible(true);
+					}
+				}
+				if(opc.equalsIgnoreCase("CLIENTE")) {
+					Cliente v=new Cliente();
+					v.setVisible(true);
+				}
+				if(!opc.equalsIgnoreCase("CLIENTE") && !opc.equalsIgnoreCase("EMPLEADO")){
+					JOptionPane.showMessageDialog(null, "Login Incorrecto: El usuario no se encuentra en nuestra base de datos.", "Aviso", JOptionPane.WARNING_MESSAGE);
+				}
+			}
+		});
 		btnFinalizar.setBounds(303, 214, 148, 66);
 		panel.add(btnFinalizar);
+		
+		JLabel lblTelefono = new JLabel("Telefono M\u00F3vil:");
+		lblTelefono.setBounds(382, 163, 95, 16);
+		panel.add(lblTelefono);
+		
+		textTelefono = new JTextField();
+		textTelefono.setColumns(10);
+		textTelefono.setBounds(489, 160, 211, 22);
+		panel.add(textTelefono);
 	}
 }
