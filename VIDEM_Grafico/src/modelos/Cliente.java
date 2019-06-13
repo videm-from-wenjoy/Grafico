@@ -27,7 +27,7 @@ public class Cliente extends Usuario{
 
 	@Override
 	public String toString() {
-		return "Cliente [numCliente=" + numCliente + ", getEmail()=" + getEmail() + "]";
+		return   getEmail();
 	}
 
 	

@@ -26,7 +26,7 @@ public class Administrador extends JFrame {
 	private JPanel panel;
 	private JPanel panelListas;
 	private JList list;
-	private DefaultListModel modelo;
+	private DefaultListModel<Cliente> modelo;
 	private BD_Usuario bbdd=new BD_Usuario("videm");
 	/**
 	 * Launch the application.
@@ -40,6 +40,8 @@ public class Administrador extends JFrame {
 		setTitle("VIDEM: Perfil de Administrador");
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 501, 360);
+		
+		
 		
 		JMenuBar menuBar = new JMenuBar();
 		setJMenuBar(menuBar);
@@ -63,22 +65,39 @@ public class Administrador extends JFrame {
 		mnBajas.add(mntmBEmpleados);
 		
 		JMenu mnListas = new JMenu("Listas");
-		menuBar.add(mnListas);
 		
+		panel = new JPanel();
+		panel.setBorder(new EmptyBorder(5, 5, 5, 5));
+		setContentPane(panel);
+		panel.setLayout(null);
+		
+		JPanel panelListas = new JPanel();
+		panelListas.setBounds(0, 57, 483, 232);
+		panel.add(panelListas);
+		panelListas.setLayout(null);
+		
+	 list = new JList();
+		list.setBounds(0, 0, 483, 232);
+		panelListas.add(list);
+		panelListas.setVisible(false);
 		JMenuItem mntmLClientes = new JMenuItem("Clientes");
 		mntmLClientes.addMouseListener(new MouseAdapter() {
+			
 			@Override
-			public void mouseClicked(MouseEvent e) {
+			public void mousePressed(MouseEvent e) {
+				panelListas.setVisible(true);
 				Boolean teVeo=panelListas.isVisible();
-				if(!teVeo) {
+				if(teVeo) {
 					panelListas.setVisible(teVeo);
-					JList list_Usuarios = new JList();
+					list = new JList();
 					Vector<Cliente> v=bbdd.listarClientes();
-						for(Usuario a: v)
-							modelo.addElement(a);					
+					modelo=new DefaultListModel<Cliente> ();
+					for (int i=0;i<v.size();i++)
+							modelo.addElement(v.get(i));	
+					list.setModel(modelo);
+					panelListas.add(list);
 				}
 				else {
-					//btnLalalalala.setText("Ahora no me ves");
 					panelListas.setVisible(!teVeo);
 				}
 			}
@@ -93,10 +112,11 @@ public class Administrador extends JFrame {
 				if(!teVeo) {
 					//btnLalalalala.setText("Ahora me ves"); Esto sirve para que al hacer click en el botón, cambie el texto de...
 					panelListas.setVisible(teVeo);
-					 list = new JList();
+					list = new JList();
 					Vector<Empleado> v=bbdd.listarEmpleados();
 						for(Usuario a: v)
-							modelo.addElement(a);										
+						//	modelo.addElement(a);	
+						list.setModel(modelo);
 				}
 				else {
 					//btnLalalalala.setText("Ahora no me ves");
@@ -113,10 +133,10 @@ public class Administrador extends JFrame {
 				Boolean teVeo=panelListas.isVisible();
 				if(!teVeo) {
 					panelListas.setVisible(teVeo);
-					JList list_Usuarios = new JList();
+					JList list = new JList();
 					Vector<Usuario> v=bbdd.listarUsuarios();
-						for(Usuario a: v)
-							modelo.addElement(a);					
+						//for(Usuario a: v)
+							//modelo.addElement(a);					
 				}
 				else {
 					panelListas.setVisible(!teVeo);
@@ -124,20 +144,8 @@ public class Administrador extends JFrame {
 			}
 		});
 		
+		menuBar.add(mnListas);
 		mnListas.add(mntmLUsuarios);
-		panel = new JPanel();
-		panel.setBorder(new EmptyBorder(5, 5, 5, 5));
-		setContentPane(panel);
-		panel.setLayout(null);
-		
-		JPanel panelListas = new JPanel();
-		panelListas.setBounds(0, 57, 483, 232);
-		panel.add(panelListas);
-		panelListas.setLayout(null);
-		
-		JList list = new JList();
-		list.setBounds(0, 0, 483, 232);
-		panelListas.add(list);
 		
 	}
 }
