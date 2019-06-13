@@ -44,6 +44,15 @@ public class ClienteV extends JFrame {
 		JMenu mnBuscar = new JMenu("Buscar");
 		menuBar.add(mnBuscar);
 		
+		JMenu mnAccesorios = new JMenu("Accesorios");
+		mnBuscar.add(mnAccesorios);
+		
+		JMenuItem mntmPorCdigoDe_3 = new JMenuItem("Por c\u00F3digo de producto");
+		mnAccesorios.add(mntmPorCdigoDe_3);
+		
+		JMenuItem mntmPorFabricante_2 = new JMenuItem("Por fabricante");
+		mnAccesorios.add(mntmPorFabricante_2);
+		
 		JMenu mnArtculosDeMerchandising = new JMenu("Art\u00EDculos de Merchandising");
 		mnBuscar.add(mnArtculosDeMerchandising);
 		

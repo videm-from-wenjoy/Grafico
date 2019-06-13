@@ -44,6 +44,12 @@ public class Encargado extends JFrame {
 		JMenu mnAgregar = new JMenu("A\u00F1adir");
 		menuBar.add(mnAgregar);
 		
+		JMenuItem mntmAccesorio = new JMenuItem("Accesorio");
+		mnAgregar.add(mntmAccesorio);
+		
+		JMenuItem mntmArtculoDeMerchandising = new JMenuItem("Art\u00EDculo de Merchandising");
+		mnAgregar.add(mntmArtculoDeMerchandising);
+		
 		JMenuItem mntmConsola = new JMenuItem("Consola");
 		mnAgregar.add(mntmConsola);
 		
@@ -53,11 +59,17 @@ public class Encargado extends JFrame {
 		JMenu mnBorrar = new JMenu("Borrar");
 		menuBar.add(mnBorrar);
 		
-		JMenuItem mntmPorCodigo = new JMenuItem("Por c\u00F3digo de producto");
-		mnBorrar.add(mntmPorCodigo);
+		JMenuItem mntmAccesorio_1 = new JMenuItem("Accesorio");
+		mnBorrar.add(mntmAccesorio_1);
 		
-		JMenuItem mntmPorNombreY = new JMenuItem("Por nombre y plataforma");
-		mnBorrar.add(mntmPorNombreY);
+		JMenuItem mntmArtculoDeMerchandising_1 = new JMenuItem("Art\u00EDculo de Merchandising");
+		mnBorrar.add(mntmArtculoDeMerchandising_1);
+		
+		JMenuItem mntmConsola_1 = new JMenuItem("Consola");
+		mnBorrar.add(mntmConsola_1);
+		
+		JMenuItem mntmVideojuego_1 = new JMenuItem("Videojuego");
+		mnBorrar.add(mntmVideojuego_1);
 		
 		JMenu mnVentas = new JMenu("Recuento de Ventas");
 		menuBar.add(mnVentas);
@@ -77,17 +89,41 @@ public class Encargado extends JFrame {
 		JMenu mnListar = new JMenu("Listar");
 		menuBar.add(mnListar);
 		
+		JMenu mnAccesorios = new JMenu("Accesorios");
+		mnListar.add(mnAccesorios);
+		
+		JMenuItem mntmPorFabricante_1 = new JMenuItem("Por fabricante");
+		mnAccesorios.add(mntmPorFabricante_1);
+		
+		JMenu mnArtculosDeMerchandising = new JMenu("Art\u00EDculos de Merchandising");
+		mnListar.add(mnArtculosDeMerchandising);
+		
+		JMenuItem mntmPorFabricante_2 = new JMenuItem("Por fabricante");
+		mnArtculosDeMerchandising.add(mntmPorFabricante_2);
+		
+		JMenu mnConsolas = new JMenu("Consolas");
+		mnListar.add(mnConsolas);
+		
+		JMenuItem mntmPorFabricante = new JMenuItem("Por fabricante");
+		mnConsolas.add(mntmPorFabricante);
+		
+		JMenuItem mntmPorGeneracin = new JMenuItem("Por generaci\u00F3n");
+		mnConsolas.add(mntmPorGeneracin);
+		
+		JMenu mnVideojuegos = new JMenu("Videojuegos");
+		mnListar.add(mnVideojuegos);
+		
 		JMenuItem mntmPorAoDe = new JMenuItem("Por a\u00F1o de lanzamiento");
-		mnListar.add(mntmPorAoDe);
+		mnVideojuegos.add(mntmPorAoDe);
 		
 		JMenuItem mntmPorDesarrollador = new JMenuItem("Por desarrollador");
-		mnListar.add(mntmPorDesarrollador);
+		mnVideojuegos.add(mntmPorDesarrollador);
 		
 		JMenuItem mntmPorGnero = new JMenuItem("Por g\u00E9nero");
-		mnListar.add(mntmPorGnero);
+		mnVideojuegos.add(mntmPorGnero);
 		
 		JMenuItem mntmPorPlataforma = new JMenuItem("Por plataforma");
-		mnListar.add(mntmPorPlataforma);
+		mnVideojuegos.add(mntmPorPlataforma);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		contentPane.setLayout(new BorderLayout(0, 0));

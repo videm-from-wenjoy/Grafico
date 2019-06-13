@@ -11,19 +11,21 @@ import javax.swing.border.EmptyBorder;
 
 import bbdd.BD_Usuario;
 import modelos.Usuario;
-import modelos.Cliente;
 import modelos.Empleado;
-
+import modelos.Cliente;
 import javax.swing.JMenuBar;
 import javax.swing.JMenu;
 import javax.swing.JMenuItem;
 import javax.swing.JList;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 public class Administrador extends JFrame {
 
-	private JPanel contentPane;
+	private JPanel panelListas;
 	private JList list_Usuarios;
 	private DefaultListModel modelo;
+	private BD_Usuario bbdd=new BD_Usuario("videm");
 	/**
 	 * Launch the application.
 	 */
@@ -73,32 +75,90 @@ public class Administrador extends JFrame {
 		menuBar.add(mnListas);
 		
 		JMenuItem mntmNewMenuItem_4 = new JMenuItem("Clientes");
+		mntmNewMenuItem_4.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				Boolean teVeo=panelListas.isVisible();
+				//lblSevillismoEnMadrid.setVisible(!teVeo);
+				if(!teVeo) {
+					//btnLalalalala.setText("Ahora me ves");
+					panelListas.setVisible(teVeo);
+					JList list_Usuarios = new JList();
+					Vector<Cliente> v=bbdd.listarClientes();
+						for(Usuario a: v)
+							modelo.addElement(a);
+					list_Usuarios.setBounds(0, 0, 335, 167);
+					
+				}
+				else {
+					//btnLalalalala.setText("Ahora no me ves");
+					panelListas.setVisible(!teVeo);
+				}
+			}
+		});
 		mnListas.add(mntmNewMenuItem_4);
 		
 		JMenuItem mntmNewMenuItem_5 = new JMenuItem("Empleados");
+		mntmNewMenuItem_5.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				Boolean teVeo=panelListas.isVisible();
+				//lblSevillismoEnMadrid.setVisible(!teVeo);
+				if(!teVeo) {
+					//btnLalalalala.setText("Ahora me ves");
+					panelListas.setVisible(teVeo);
+					JList list_Usuarios = new JList();
+					Vector<Empleado> v=bbdd.listarEmpleados();
+						for(Usuario a: v)
+							modelo.addElement(a);
+					list_Usuarios.setBounds(0, 0, 335, 167);
+					
+				}
+				else {
+					//btnLalalalala.setText("Ahora no me ves");
+					panelListas.setVisible(!teVeo);
+				}
+			}
+		});
 		mnListas.add(mntmNewMenuItem_5);
 		
 		JMenuItem mntmNewMenuItem_6 = new JMenuItem("Usuarios");
+		mntmNewMenuItem_6.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent arg0) {
+				Boolean teVeo=panelListas.isVisible();
+				//lblSevillismoEnMadrid.setVisible(!teVeo);
+				if(!teVeo) {
+					//btnLalalalala.setText("Ahora me ves");
+					panelListas.setVisible(teVeo);
+					JList list_Usuarios = new JList();
+					Vector<Usuario> v=bbdd.listarUsuarios();
+						for(Usuario a: v)
+							modelo.addElement(a);
+					list_Usuarios.setBounds(0, 0, 335, 167);
+					
+				}
+				else {
+					//btnLalalalala.setText("Ahora no me ves");
+					panelListas.setVisible(!teVeo);
+				}
+			}
+		});
 		mnListas.add(mntmNewMenuItem_6);
-		contentPane = new JPanel();
-		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
-		setContentPane(contentPane);
-		contentPane.setLayout(null);
+		panelListas = new JPanel();
+		panelListas.setBorder(new EmptyBorder(5, 5, 5, 5));
+		setContentPane(panelListas);
+		panelListas.setLayout(null);
 		
 		JList list = new JList();
-		list.setBounds(183, 140, 1, 1);
-		contentPane.add(list);
+		list.setBounds(0, 57, 483, 232);
+		panelListas.add(list);
 		
 		JPanel panel = new JPanel();
-		panel.setBounds(74, 40, 335, 167);
-		contentPane.add(panel);
+		panel.setBounds(0, 57, 483, 232);
+		panelListas.add(panel);
 		panel.setLayout(null);
-		
-		JList list_Usuarios = new JList();
-		Vector<Cliente> v=new Cliente();
-			for(Usuario a: v)
-				modelo.addElement(a);
-		list_Usuarios.setBounds(0, 0, 335, 167);
 		panel.add(list_Usuarios);
+		
 	}
 }
