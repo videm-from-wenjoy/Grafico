@@ -23,8 +23,9 @@ import java.awt.Toolkit;
 
 public class Administrador extends JFrame {
 
+	private JPanel panel;
 	private JPanel panelListas;
-	private JList list_Usuarios;
+	private JList list;
 	private DefaultListModel modelo;
 	private BD_Usuario bbdd=new BD_Usuario("videm");
 	/**
@@ -92,7 +93,7 @@ public class Administrador extends JFrame {
 				if(!teVeo) {
 					//btnLalalalala.setText("Ahora me ves"); Esto sirve para que al hacer click en el botón, cambie el texto de...
 					panelListas.setVisible(teVeo);
-					 list_Usuarios = new JList();
+					 list = new JList();
 					Vector<Empleado> v=bbdd.listarEmpleados();
 						for(Usuario a: v)
 							modelo.addElement(a);										
@@ -124,21 +125,19 @@ public class Administrador extends JFrame {
 		});
 		
 		mnListas.add(mntmLUsuarios);
-		panelListas = new JPanel();
-		panelListas.setBorder(new EmptyBorder(5, 5, 5, 5));
-		setContentPane(panelListas);
+		panel = new JPanel();
+		panel.setBorder(new EmptyBorder(5, 5, 5, 5));
+		setContentPane(panel);
+		panel.setLayout(null);
+		
+		JPanel panelListas = new JPanel();
+		panelListas.setBounds(0, 57, 483, 232);
+		panel.add(panelListas);
 		panelListas.setLayout(null);
 		
 		JList list = new JList();
-		list.setBounds(0, 57, 483, 232);
+		list.setBounds(0, 0, 483, 232);
 		panelListas.add(list);
 		
-		JPanel panel = new JPanel();
-		panel.setBounds(0, 57, 483, 232);
-		panelListas.add(panel);
-		panel.setLayout(null);
-		
-		panel.add(list_Usuarios);
-		list_Usuarios.setBounds(0, 0, 335, 167);
 	}
 }
