@@ -6,13 +6,22 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
+import bbdd.BD_Usuario;
+import modelos.Usuario;
+import modelos.Cliente;
+
 import javax.swing.JMenuBar;
 import javax.swing.JMenu;
 import javax.swing.JMenuItem;
+import java.awt.Toolkit;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 public class ClienteV extends JFrame {
 
 	private JPanel contentPane;
+	private BD_Usuario bbdd=new BD_Usuario("videm");
 
 	/**
 	 * Launch the application.
@@ -34,6 +43,7 @@ public class ClienteV extends JFrame {
 	 * Create the frame.
 	 */
 	public ClienteV() {
+		setIconImage(Toolkit.getDefaultToolkit().getImage(ClienteV.class.getResource("/img/icon.png")));
 		setTitle("\u00A1Bienvenido a VIDEM!");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
@@ -111,6 +121,13 @@ public class ClienteV extends JFrame {
 		mnMisDatos.add(mntmRegistroDeCompras);
 		
 		JMenuItem mntmBorrarCuentaVidem = new JMenuItem("Borrar cuenta VIDEM");
+		mntmBorrarCuentaVidem.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				//bbdd.borrar_Cliente(user);
+				//bbdd.borrar_Usuario(user);
+			}
+		});
 		mnMisDatos.add(mntmBorrarCuentaVidem);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));

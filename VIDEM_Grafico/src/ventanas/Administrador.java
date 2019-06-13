@@ -19,6 +19,7 @@ import javax.swing.JMenuItem;
 import javax.swing.JList;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.awt.Toolkit;
 
 public class Administrador extends JFrame {
 
@@ -46,6 +47,7 @@ public class Administrador extends JFrame {
 	 * Create the frame.
 	 */
 	public Administrador() {
+		setIconImage(Toolkit.getDefaultToolkit().getImage(Administrador.class.getResource("/img/icon.png")));
 		setTitle("VIDEM: Perfil de Administrador");
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 501, 360);
@@ -62,33 +64,29 @@ public class Administrador extends JFrame {
 		JMenuItem mntmAEmpleados = new JMenuItem("Empleados");
 		mnAltas.add(mntmAEmpleados);
 		
-		JMenu mnNewMenu = new JMenu("Bajas");
-		menuBar.add(mnNewMenu);
+		JMenu mnBajas = new JMenu("Bajas");
+		menuBar.add(mnBajas);
 		
 		JMenuItem mntmBClientes = new JMenuItem("Clientes");
-		mnNewMenu.add(mntmBClientes);
+		mnBajas.add(mntmBClientes);
 		
 		JMenuItem mntmBEmpleados = new JMenuItem("Empleados");
-		mnNewMenu.add(mntmBEmpleados);
+		mnBajas.add(mntmBEmpleados);
 		
 		JMenu mnListas = new JMenu("Listas");
 		menuBar.add(mnListas);
 		
-		JMenuItem mntmNewMenuItem_4 = new JMenuItem("Clientes");
-		mntmNewMenuItem_4.addMouseListener(new MouseAdapter() {
+		JMenuItem mntmLClientes = new JMenuItem("Clientes");
+		mntmLClientes.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				Boolean teVeo=panelListas.isVisible();
-				//lblSevillismoEnMadrid.setVisible(!teVeo);
 				if(!teVeo) {
-					//btnLalalalala.setText("Ahora me ves");
 					panelListas.setVisible(teVeo);
 					JList list_Usuarios = new JList();
 					Vector<Cliente> v=bbdd.listarClientes();
 						for(Usuario a: v)
-							modelo.addElement(a);
-					list_Usuarios.setBounds(0, 0, 335, 167);
-					
+							modelo.addElement(a);					
 				}
 				else {
 					//btnLalalalala.setText("Ahora no me ves");
@@ -96,10 +94,10 @@ public class Administrador extends JFrame {
 				}
 			}
 		});
-		mnListas.add(mntmNewMenuItem_4);
+		mnListas.add(mntmLClientes);
 		
-		JMenuItem mntmNewMenuItem_5 = new JMenuItem("Empleados");
-		mntmNewMenuItem_5.addMouseListener(new MouseAdapter() {
+		JMenuItem mntmLEmpleados = new JMenuItem("Empleados");
+		mntmLEmpleados.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				Boolean teVeo=panelListas.isVisible();
@@ -110,9 +108,7 @@ public class Administrador extends JFrame {
 					JList list_Usuarios = new JList();
 					Vector<Empleado> v=bbdd.listarEmpleados();
 						for(Usuario a: v)
-							modelo.addElement(a);
-					list_Usuarios.setBounds(0, 0, 335, 167);
-					
+							modelo.addElement(a);										
 				}
 				else {
 					//btnLalalalala.setText("Ahora no me ves");
@@ -120,10 +116,10 @@ public class Administrador extends JFrame {
 				}
 			}
 		});
-		mnListas.add(mntmNewMenuItem_5);
+		mnListas.add(mntmLEmpleados);
 		
-		JMenuItem mntmNewMenuItem_6 = new JMenuItem("Usuarios");
-		mntmNewMenuItem_6.addMouseListener(new MouseAdapter() {
+		JMenuItem mntmLUsuarios = new JMenuItem("Usuarios");
+		mntmLUsuarios.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent arg0) {
 				Boolean teVeo=panelListas.isVisible();
@@ -134,9 +130,7 @@ public class Administrador extends JFrame {
 					JList list_Usuarios = new JList();
 					Vector<Usuario> v=bbdd.listarUsuarios();
 						for(Usuario a: v)
-							modelo.addElement(a);
-					list_Usuarios.setBounds(0, 0, 335, 167);
-					
+							modelo.addElement(a);					
 				}
 				else {
 					//btnLalalalala.setText("Ahora no me ves");
@@ -144,7 +138,7 @@ public class Administrador extends JFrame {
 				}
 			}
 		});
-		mnListas.add(mntmNewMenuItem_6);
+		mnListas.add(mntmLUsuarios);
 		panelListas = new JPanel();
 		panelListas.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(panelListas);
@@ -159,6 +153,7 @@ public class Administrador extends JFrame {
 		panelListas.add(panel);
 		panel.setLayout(null);
 		panel.add(list_Usuarios);
+		list_Usuarios.setBounds(0, 0, 335, 167);
 		
 	}
 }

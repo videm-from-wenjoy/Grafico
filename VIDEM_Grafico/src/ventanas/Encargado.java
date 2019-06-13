@@ -9,6 +9,7 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.JMenuBar;
 import javax.swing.JMenu;
 import javax.swing.JMenuItem;
+import java.awt.Toolkit;
 
 public class Encargado extends JFrame {
 
@@ -34,6 +35,7 @@ public class Encargado extends JFrame {
 	 * Create the frame.
 	 */
 	public Encargado() {
+		setIconImage(Toolkit.getDefaultToolkit().getImage(Encargado.class.getResource("/img/icon.png")));
 		setTitle("VIDEM: Perfil de Encargado");
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 450, 300);

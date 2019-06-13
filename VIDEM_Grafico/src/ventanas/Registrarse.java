@@ -20,6 +20,7 @@ import javax.swing.JTextField;
 import javax.swing.JButton;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.awt.Toolkit;
 
 public class Registrarse extends JFrame {
 
@@ -35,6 +36,7 @@ public class Registrarse extends JFrame {
 	
 	
 	public Registrarse() {
+		setIconImage(Toolkit.getDefaultToolkit().getImage(Registrarse.class.getResource("/img/icon.png")));
 		
 		setTitle("VIDEM: Registrarse en la aplicaci\u00F3n");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

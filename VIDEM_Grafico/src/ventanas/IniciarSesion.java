@@ -19,6 +19,7 @@ import javax.swing.JTextField;
 import javax.swing.JButton;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.awt.Toolkit;
 
 public class IniciarSesion extends JFrame {
 
@@ -46,6 +47,7 @@ public class IniciarSesion extends JFrame {
 	 * Create the frame.
 	 */
 	public IniciarSesion() {
+		setIconImage(Toolkit.getDefaultToolkit().getImage(IniciarSesion.class.getResource("/img/icon.png")));
 		setTitle("VIDEM: Iniciar Sesi\u00F3n");
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
