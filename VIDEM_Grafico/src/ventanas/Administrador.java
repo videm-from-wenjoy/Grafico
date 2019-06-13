@@ -30,18 +30,6 @@ public class Administrador extends JFrame {
 	/**
 	 * Launch the application.
 	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					Administrador frame = new Administrador();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
 
 	/**
 	 * Create the frame.
@@ -101,11 +89,10 @@ public class Administrador extends JFrame {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				Boolean teVeo=panelListas.isVisible();
-				//lblSevillismoEnMadrid.setVisible(!teVeo);
 				if(!teVeo) {
-					//btnLalalalala.setText("Ahora me ves");
+					//btnLalalalala.setText("Ahora me ves"); Esto sirve para que al hacer click en el botón, cambie el texto de...
 					panelListas.setVisible(teVeo);
-					JList list_Usuarios = new JList();
+					 list_Usuarios = new JList();
 					Vector<Empleado> v=bbdd.listarEmpleados();
 						for(Usuario a: v)
 							modelo.addElement(a);										
@@ -123,9 +110,7 @@ public class Administrador extends JFrame {
 			@Override
 			public void mouseClicked(MouseEvent arg0) {
 				Boolean teVeo=panelListas.isVisible();
-				//lblSevillismoEnMadrid.setVisible(!teVeo);
 				if(!teVeo) {
-					//btnLalalalala.setText("Ahora me ves");
 					panelListas.setVisible(teVeo);
 					JList list_Usuarios = new JList();
 					Vector<Usuario> v=bbdd.listarUsuarios();
@@ -133,11 +118,11 @@ public class Administrador extends JFrame {
 							modelo.addElement(a);					
 				}
 				else {
-					//btnLalalalala.setText("Ahora no me ves");
 					panelListas.setVisible(!teVeo);
 				}
 			}
 		});
+		
 		mnListas.add(mntmLUsuarios);
 		panelListas = new JPanel();
 		panelListas.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -152,8 +137,8 @@ public class Administrador extends JFrame {
 		panel.setBounds(0, 57, 483, 232);
 		panelListas.add(panel);
 		panel.setLayout(null);
+		
 		panel.add(list_Usuarios);
 		list_Usuarios.setBounds(0, 0, 335, 167);
-		
 	}
 }
